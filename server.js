@@ -86,7 +86,7 @@ app.get("/", (req, res) => {
 app.delete("/", (req, res) => {
   // 4️⃣. 세션 내 정보를 삭제하는 메소드를 작성하세요.
   // 5️⃣. 쿠키를 삭제하는 메소드를 작성하세요.
-  req.session.destroy("/", (req, res) => {
+  req.session.destroy(() => {
     res.clearCookie("session_id");
     res.send("🧹세션 삭제 완료");
   });

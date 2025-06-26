@@ -12,7 +12,9 @@ const userDetail = document.querySelector("#user_info");
 axios.defaults.withCredentials = true;
 
 // form의 기본 submit 값 초기화
-form.addEventListener("submit", (e) => e.preventDefault());
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
 // 로그인 함수
 function login() {

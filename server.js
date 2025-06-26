@@ -50,10 +50,10 @@ app.use(express.json());
 // 1️⃣. 요구사항에 맞도록 session 옵션을 설정해 주세요. (총 4가지)
 app.use(
   session({
-    // 암호화, 열쇠 역할을 하는 문자열 설정
-    // 요청이 들어왔을 때 변경되는 사항이 없는 경우 저장하지 않도록 설정
-    // 요청이 들어왔을 때 내용이 비어있는 경우 저장하지 않도록 설정
-    // 쿠키 이름을 session_id로 변경
+    secret: "session secret",
+    resave: false,
+    saveUninitialized: false,
+    name: "session_id",
   })
 );
 

@@ -70,14 +70,14 @@ app.post("/", (req, res) => {
     res.status(401).send("로그인 실패");
   } else {
     // 유저가 존재하는 경우 user의 id 정보를 세션에 저장
-    req.session.userId = userInfo.user_id;
+    req.session.user_id = userInfo.user_id;
     res.send("⭐️세션 생성 완료!");
   }
 });
 
 // GET 요청
 app.get("/", (req, res) => {
-  const userInfo = users.find((el) => el.user_id === req.session.userId);
+  const userInfo = users.find((el) => el.user_id === req.session.user_id);
   // json 형식으로 내보내기
   return res.json(userInfo);
 });
@@ -86,9 +86,10 @@ app.get("/", (req, res) => {
 app.delete("/", (req, res) => {
   // 4️⃣. 세션 내 정보를 삭제하는 메소드를 작성하세요.
   // 5️⃣. 쿠키를 삭제하는 메소드를 작성하세요.
-  res.session.destroy();
-  res.clearCookie("sessionId");
-  res.send("🧹세션 삭제 완료");
+  req.session.destroy("/", (req, res) => {
+    res.clearCookie("session_id");
+    res.send("🧹세션 삭제 완료");
+  });
 });
 
 app.listen(3000, () => console.log("서버 실행 ..."));

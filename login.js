@@ -18,10 +18,10 @@ form.addEventListener("submit", (e) => {
 
 // 로그인 함수
 function login() {
-  const userId = idInput.value;
-  const userPassword = passwordInput.value;
+  const user_id = idInput.value;
+  const user_password = passwordInput.value;
 
-  return axios.post("http://localhost:3000", { userId, userPassword });
+  return axios.post("http://localhost:3000", { user_id, user_password });
 }
 
 // 로그아웃 함수

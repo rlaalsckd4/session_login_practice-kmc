@@ -60,7 +60,10 @@ app.use(
 // POST 요청 (로그인 요청시 보내는 메소드)
 app.post("/", (req, res) => {
   // 2️⃣. 요청 바디에서 전달받은 값을 구조분해 할당을 사용하여 관리하세요.
-  const {} = req.body;
+  const { user_id, user_password } = req.body;
+  const userInfo = users.find(
+    (el) => el.user_id === user_id && el.user_password === user_password
+  );
   // 3️⃣. (find 메서드를 사용하여) users의 정보와 사용자가 입력한 정보를 비교하여 일치하는 회원이 존재하는지 확인하는 로직을 작성하세요.
   const userInfo = users.find();
 
